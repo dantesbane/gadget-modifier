@@ -9,8 +9,9 @@ class Status(models.TextChoices):
     DECOMMISSIONED = 'Decommissioned'
 
 class gadgets(models.Model):
-    name = models.CharField(max_length=100)
-    status=models.Enum
+    name = models.CharField(max_length=100,null=True)
+    status=models.CharField(choices=Status.choices,null=False,default=Status.ACTIVE)
+
 
     def __str__(self):
         return self.name
