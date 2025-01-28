@@ -6,6 +6,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from django_filters import rest_framework as filters
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.permissions import IsAuthenticated
 
 
 #serializer to parser the gadget
@@ -45,6 +46,7 @@ class GadgetViewSet(viewsets.ModelViewSet):
     serializer_class = GadgetSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_class = GadgetFilter
+    permission_classes = [IsAuthenticated]
 
     
 
